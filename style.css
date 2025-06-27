@@ -1,0 +1,161 @@
+body {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom right, #a18cd1, #fbc2eb);
+  transition: background 0.5s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+button#toggle-theme {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.clock {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+body.dark-mode {
+  background: linear-gradient(to bottom right, #222, #444);
+}
+
+body.dark-mode button#toggle-theme {
+  color: #eee;
+}
+
+body.dark-mode .clock {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.hour-hand,
+.min-hand,
+.second-hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(0deg);
+  border-radius: 2px;
+  transition: background 0.5s ease;
+}
+
+.hour-hand {
+  height: 70px;
+  width: 6px;
+  background: white;
+}
+
+.min-hand {
+  height: 100px;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.second-hand {
+  height: 120px;
+  width: 2px;
+  background: rgb(160, 2, 2);
+}
+
+body.dark-mode .hour-hand {
+  background: #eee;
+}
+
+body.dark-mode .min-hand {
+  background: rgba(238, 238, 238, 0.7);
+}
+
+body.dark-mode .second-hand {
+  background: #ff4444;
+}
+
+.ticks {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.ticks div {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  width: 2px;
+  height: 10px;
+  top: 10px;
+  left: 50%;
+  transform-origin: center 140px;
+  border-radius: 1px;
+}
+
+body.dark-mode .ticks div {
+  background: rgba(238, 238, 238, 0.7);
+}
+
+.date {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  text-align: center;
+}
+
+body.dark-mode .date {
+  color: #eee;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 400px) {
+  .clock {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .hour-hand {
+    height: 20vw;
+    width: 1.2vw;
+  }
+
+  .min-hand {
+    height: 30vw;
+    width: 0.8vw;
+  }
+
+  .second-hand {
+    height: 36vw;
+    width: 0.4vw;
+  }
+
+  .ticks div {
+    height: 3vw;
+    width: 0.5vw;
+  }
+
+  .date {
+    font-size: 4vw;
+  }
+}
